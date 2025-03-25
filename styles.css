@@ -76,8 +76,10 @@ body {
 
 /* Hero Bölümü için Özel Arka Plan Ayarı */
 .hero-section .section-background {
-    background-position: 40% 60%; /* Yatayda biraz sola (40%), dikeyde biraz aşağıya (60%) */
-    background-size: cover; /* Resmi ekranı kaplayacak şekilde ölçeklendirir */
+    background-image: url('images/hero.jpg');
+    background-position: center center; /* Masaüstünde merkezde */
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .section-overlay {
@@ -714,7 +716,9 @@ footer {
 
     /* Hero Bölümü için Mobil Arka Plan Ayarı */
     .hero-section .section-background {
-        background-position: center center; /* Fotoğrafı tam ortada hizalar */
+        background-image: url('images/hero-mobile.jpg'); /* Mobil için ayrı bir görüntü */
+        background-position: center center; /* Görüntüyü tam ortada hizalar */
         background-size: cover; /* Resmi ekranı kaplayacak şekilde ölçeklendirir */
+        background-repeat: no-repeat;
     }
 }
