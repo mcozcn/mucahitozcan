@@ -377,7 +377,7 @@ section#home.hero-section .section-background {
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 100px);
+    grid-template-rows: auto; /* Sabit yükseklik yerine içeriğe göre ayarlanır */
     grid-gap: 20px;
     width: 100%;
     min-height: 600px;
@@ -399,9 +399,7 @@ section#home.hero-section .section-background {
     width: 100%;
     max-width: 200px;
     min-height: 60px;
-    max-height: 60px;
     box-sizing: border-box;
-    overflow: hidden;
     opacity: 1; /* Varsayılan olarak görünür */
 }
 
@@ -418,9 +416,9 @@ section#home.hero-section .section-background {
 
 .skill-tag span {
     font-size: 16px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal; /* Metnin birden fazla satıra yayılmasına izin verir */
+    overflow: visible; /* Metnin taşmasına izin verir */
+    text-align: center;
 }
 
 .skill-lines {
@@ -643,14 +641,16 @@ footer {
 
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(7, 80px);
+        grid-template-rows: auto; /* Sabit yükseklik yerine içeriğe göre ayarlanır */
+        grid-gap: 15px; /* Daha küçük boşluk */
     }
 
     .skill-tag {
         padding: 10px 15px;
         min-height: 50px;
-        max-height: 50px;
-        max-width: 150px;
+        max-width: 180px; /* Daha geniş alan */
+        flex-wrap: wrap; /* İkon ve metin alt alta gelebilir */
+        justify-content: flex-start; /* İçeriği sola hizalar */
     }
 
     .skill-tag img {
@@ -660,6 +660,10 @@ footer {
 
     .skill-tag span {
         font-size: 14px;
+        white-space: normal; /* Metnin birden fazla satıra yayılmasına izin verir */
+        overflow: visible; /* Metnin taşmasına izin verir */
+        text-align: center;
+        width: 100%; /* Metnin tam genişlikte yer kaplamasını sağlar */
     }
 
     .linkedin-logo {
