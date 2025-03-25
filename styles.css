@@ -1,0 +1,664 @@
+/* Genel Stiller */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    background-color: #1e3c72;
+    overflow-x: hidden;
+}
+
+/* Dil Değiştirme Butonu */
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    background: linear-gradient(to bottom, #1E3C72, #4682B4);
+    padding: 5px;
+    border-radius: 20px;
+    z-index: 11;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.lang-btn.active {
+    background: #FFB74D;
+    color: #1E3C72;
+}
+
+/* Bölüm Stilleri */
+.section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.section-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #FFB74D, #80D8FF);
+    background-size: cover;
+    background-blend-mode: overlay;
+    z-index: 1;
+}
+
+.section-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+/* Dekoratif Elemanlar (Yıldızlar) */
+.decorative-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.star {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.7;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.star1 {
+    top: 20%;
+    left: 15%;
+    animation: twinkle 3s infinite;
+}
+
+.star2 {
+    top: 50%;
+    left: 70%;
+    animation: twinkle 4s infinite;
+}
+
+.star3 {
+    top: 80%;
+    left: 30%;
+    animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Orta Katman (Midground Layer) */
+.midground-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/midground.png') center center / cover no-repeat;
+    opacity: 0.3;
+    z-index: 3;
+}
+
+/* Sol Panel */
+.section-left {
+    width: 30%;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #1E3C72, #4682B4);
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+    z-index: 4;
+}
+
+.panel-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.panel-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    /* opacity: 0; kaldırıldı, animasyon JavaScript ile kontrol edilecek */
+}
+
+.panel-content h2 {
+    font-size: 40px;
+    font-weight: 700;
+    /* opacity: 0; kaldırıldı */
+}
+
+.panel-content p {
+    font-size: 18px;
+    /* opacity: 0; kaldırıldı */
+}
+
+/* Sağ İçerik */
+.section-right {
+    width: 70%;
+    margin-left: 30%;
+    padding: 80px;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hero kısmı için özel ayar */
+.hero-section .section-right {
+    align-items: center;
+}
+
+.content {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.content p:hover {
+    transform: translateY(-5px);
+}
+
+.content-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+    /* opacity: 0; kaldırıldı */
+}
+
+.content-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Deneyimler (Sıralı Kartlar) */
+.experience-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-height: 600px;
+}
+
+.experience-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    width: 100%;
+    max-width: 1000px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* opacity: 0; kaldırıldı */
+}
+
+.experience-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.experience-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.experience-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(to right, #FFB74D, #80D8FF);
+}
+
+.experience-card .date {
+    font-size: 16px;
+    color: #FFB74D;
+    margin-bottom: 15px;
+}
+
+.experience-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.experience-card li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.experience-card li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #80D8FF;
+    font-size: 16px;
+}
+
+/* Projeler (Sıralı Kartlar) */
+.projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-height: 600px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    width: 100%;
+    max-width: 1000px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* opacity: 0; kaldırıldı */
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.project-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.project-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(to right, #FFB74D, #80D8FF);
+}
+
+.project-card .date {
+    font-size: 16px;
+    color: #FFB74D;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Yetenekler (Grid Yapısı) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 100px);
+    grid-gap: 20px;
+    width: 100%;
+    min-height: 600px;
+    position: relative;
+    align-items: center;
+    justify-items: center;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    min-height: 60px;
+    max-height: 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* opacity: 0; kaldırıldı */
+}
+
+.skill-tag:hover {
+    transform: scale(1.1);
+}
+
+.skill-tag img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+}
+
+.skill-tag span {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.skill-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.skill-lines .line {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(to right, #FFB74D, #80D8FF);
+    opacity: 0.5;
+}
+
+/* İletişim Formu */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+    /* opacity: 0; kaldırıldı */
+}
+
+.contact-form:hover {
+    transform: translateY(-10px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input, form textarea {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+form textarea {
+    height: 120px;
+    resize: none;
+}
+
+form button {
+    background: linear-gradient(to right, #FFB74D, #80D8FF);
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+form button:hover {
+    transform: scale(1.05);
+}
+
+.contact-info {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contact-info p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: #FFB74D;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* LinkedIn Logosu */
+.linkedin-logo {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.linkedin-logo:hover {
+    transform: scale(1.1);
+}
+
+/* Yan Navigasyon Çubuğu */
+.side-nav {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(to bottom, #1E3C72, #4682B4);
+    padding: 20px 10px;
+    border-radius: 20px;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    text-decoration: none;
+}
+
+.nav-dot span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.nav-dot:hover span {
+    transform: scale(1.5);
+    background: #FFB74D;
+}
+
+.nav-dot.active span {
+    transform: scale(1.5);
+    background: #FFB74D;
+}
+
+/* Altbilgi */
+footer {
+    background: linear-gradient(to right, #1E3C72, #4682B4);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column;
+    }
+
+    .section-left {
+        width: 100%;
+        height: 30vh;
+        clip-path: none;
+    }
+
+    .section-right {
+        width: 100%;
+        margin-left: 0;
+        padding: 40px;
+    }
+
+    .panel-content h1 {
+        font-size: 36px;
+    }
+
+    .panel-content h2 {
+        font-size: 30px;
+    }
+
+    .panel-content p {
+        font-size: 16px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+
+    .experience-card, .project-card {
+        max-width: 100%;
+    }
+
+    .experience-card h3, .project-card h3 {
+        font-size: 20px;
+    }
+
+    .experience-card .date, .project-card .date {
+        font-size: 14px;
+    }
+
+    .experience-card li, .project-card p {
+        font-size: 14px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(7, 80px);
+    }
+
+    .skill-tag {
+        padding: 10px 15px;
+        min-height: 50px;
+        max-height: 50px;
+        max-width: 150px;
+    }
+
+    .skill-tag img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .skill-tag span {
+        font-size: 14px;
+    }
+
+    .linkedin-logo {
+        width: 20px;
+        height: 20px;
+    }
+
+    .side-nav {
+        right: 10px;
+        padding: 15px 8px;
+        gap: 15px;
+    }
+
+    .nav-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .language-switcher {
+        top: 10px;
+        right: 10px;
+        padding: 3px;
+        gap: 5px;
+    }
+
+    .lang-btn {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+
+    .star {
+        width: 8px;
+        height: 8px;
+    }
+}
