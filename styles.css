@@ -713,7 +713,7 @@ footer {
 
     /* Hero Bölümü için Mobil Arka Plan Ayarı */
     .hero-section .section-background {
-        background-position: center 20%; /* Fotoğrafın üst kısmını daha fazla gösterir */
+        background-position: center center; /* Fotoğrafı tam ortada hizalar */
         background-size: cover; /* Resmi ekranı kaplayacak şekilde ölçeklendirir */
     }
 }
