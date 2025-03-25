@@ -75,11 +75,11 @@ body {
 }
 
 /* Hero Bölümü için Özel Arka Plan Ayarı */
-.hero-section .section-background {
-    background-image: url('images/hero.jpg');
-    background-position: center center; /* Masaüstünde merkezde */
-    background-size: cover;
-    background-repeat: no-repeat;
+section#home.hero-section .section-background {
+    background-image: url('images/hero.jpg') !important;
+    background-position: center center !important; /* Masaüstünde merkezde */
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 }
 
 .section-overlay {
@@ -592,7 +592,7 @@ footer {
 }
 
 /* Mobil Uyumluluk */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .section {
         flex-direction: column;
     }
@@ -715,10 +715,10 @@ footer {
     }
 
     /* Hero Bölümü için Mobil Arka Plan Ayarı */
-    .hero-section .section-background {
-        background-image: url('images/hero-mobile.jpg'); /* Mobil için ayrı bir görüntü */
-        background-position: center center; /* Görüntüyü tam ortada hizalar */
-        background-size: cover; /* Resmi ekranı kaplayacak şekilde ölçeklendirir */
-        background-repeat: no-repeat;
+    section#home.hero-section .section-background {
+        background-image: url('images/hero-mobile.jpg') !important; /* Mobil için ayrı bir görüntü */
+        background-position: center center !important; /* Görüntüyü tam ortada hizalar */
+        background-size: cover !important; /* Resmi ekranı kaplayacak şekilde ölçeklendirir */
+        background-repeat: no-repeat !important;
     }
 }
