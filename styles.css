@@ -71,6 +71,12 @@ body {
     background-size: cover;
     background-blend-mode: overlay;
     z-index: 1;
+    background-position: center center; /* Varsayılan olarak merkezde */
+}
+
+/* Hero Bölümü için Özel Arka Plan Ayarı */
+.hero-section .section-background {
+    background-position: center center; /* Masaüstünde merkezde */
 }
 
 .section-overlay {
@@ -703,5 +709,11 @@ footer {
     .view-link {
         padding: 8px 16px;
         font-size: 14px;
+    }
+
+    /* Hero Bölümü için Mobil Arka Plan Ayarı */
+    .hero-section .section-background {
+        background-position: center 20%; /* Fotoğrafın üst kısmını daha fazla gösterir */
+        background-size: cover; /* Resmi ekranı kaplayacak şekilde ölçeklendirir */
     }
 }
