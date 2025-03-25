@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const langButtons = document.querySelectorAll('.lang-btn');
     const elementsToTranslate = document.querySelectorAll('[data-tr][data-en]');
     const inputsToTranslate = document.querySelectorAll('[data-tr-placeholder][data-en-placeholder]');
+    const viewLinksToTranslate = document.querySelectorAll('.view-link[data-tr][data-en]'); // Yeni eklenen linkler için
 
     const setLanguage = (lang) => {
         elementsToTranslate.forEach(element => {
@@ -121,6 +122,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.setAttribute('placeholder', placeholder);
             } else {
                 console.warn(`Missing placeholder translation for ${lang} in input:`, input);
+            }
+        });
+
+        // Yeni eklenen "Kataloğu İncele" ve "Kılavuzu İncele" linklerini çevir
+        viewLinksToTranslate.forEach(link => {
+            const text = link.getAttribute(`data-${lang}`);
+            if (text) {
+                link.textContent = text;
+            } else {
+                console.warn(`Missing translation for ${lang} in view-link:`, link);
             }
         });
 
@@ -153,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Sayfadaki tüm metinlerin görünür olduğundan emin ol
-    document.querySelectorAll('h1, h2, h3, p, li, span, button, input, textarea').forEach(el => {
+    document.querySelectorAll('h1, h2, h3, p, li, span, button, input, textarea, a.view-link').forEach(el => {
         if (!el.style.opacity || el.style.opacity === '0') {
             el.style.opacity = '1';
         }
